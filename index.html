@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jim Orr — Software Engineer</title>
+<meta name="description" content="Jim Orr — software engineer; full-stack and AI-first development; founder of lab980.">
+<link rel="preload" href="fonts/Inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/SpaceGrotesk-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root{
+    --bg:#fbfbf9;
+    --surface:#ffffff;
+    --ink:#16181d;
+    --muted:#5a5f66;
+    --faint:#6c7178;
+    --line:#e6e6e0;
+    --accent:#0e7c66;
+    --accent-ink:#0a5e4d;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+    --display:"Space Grotesk",var(--sans);
+    --mono:"JetBrains Mono","SF Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  /* top bar */
+  .topbar{
+    position:sticky;top:0;z-index:20;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;
+    background:rgba(251,251,249,.85);
+    backdrop-filter:saturate(1.2) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .mark{
+    font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.14em;
+    color:var(--ink);text-decoration:none;
+  }
+  .mark:hover{color:var(--accent-ink)}
+  .mark .dot{color:var(--accent)}
+  .topbar a.dl{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;
+    color:var(--accent-ink);text-decoration:none;
+    border:1px solid var(--accent);border-radius:2px;
+    padding:7px 13px;
+  }
+  .topbar a.dl:hover{background:var(--accent);color:#fff}
+  .topbar a.dl:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .page{max-width:720px;margin:0 auto;padding:64px 28px 80px}
+
+  /* hero */
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent-ink);margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(42px,8vw,68px);line-height:1.02;letter-spacing:-.02em;
+    margin-bottom:14px;
+  }
+  .cursor{
+    display:inline-block;width:.5ch;height:.78em;background:var(--accent);
+    margin-left:.08em;vertical-align:baseline;transform:translateY(.06em);
+    animation:blink 1.15s steps(1) infinite;
+  }
+  @keyframes blink{50%{opacity:0}}
+  .role{
+    font-family:var(--display);font-weight:500;font-size:clamp(18px,3vw,22px);
+    color:var(--muted);margin-bottom:22px;
+  }
+  .contact{
+    font-family:var(--mono);font-size:13.5px;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:30px;
+  }
+  .contact a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+  .contact a:hover{color:var(--accent-ink);border-color:var(--accent)}
+  .cta{
+    display:inline-block;font-family:var(--sans);font-weight:600;font-size:15px;
+    color:#fff;background:var(--accent);text-decoration:none;
+    padding:12px 22px;border-radius:3px;
+  }
+  .cta:hover{background:var(--accent-ink)}
+  .cta:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
+
+  .summary{
+    font-size:17px;line-height:1.6;color:#2c2f35;
+    margin:40px 0 8px;max-width:62ch;
+  }
+
+  /* sections */
+  section{margin-top:46px}
+  h2{
+    font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--faint);
+    padding-bottom:10px;margin-bottom:22px;border-bottom:1px solid var(--line);
+  }
+
+  /* skills */
+  .skill{display:flex;gap:18px;padding:7px 0;align-items:baseline}
+  .skill + .skill{border-top:1px solid var(--line)}
+  .skill dt{
+    flex:0 0 120px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--accent-ink);
+  }
+  .skill dd{font-size:15px;color:#2c2f35}
+
+  /* experience */
+  .job{margin-bottom:26px}
+  .job:last-child{margin-bottom:0}
+  .job-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px 16px;flex-wrap:wrap}
+  .job-title{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em}
+  .job-co{font-weight:500;color:var(--muted);font-size:15px}
+  .job-date{font-family:var(--mono);font-size:12.5px;color:var(--faint);white-space:nowrap}
+  .job ul{list-style:none;margin-top:9px}
+  .job li{
+    position:relative;padding-left:18px;margin-bottom:7px;
+    font-size:14.5px;line-height:1.55;color:#3a3e44;
+  }
+  .job li::before{
+    content:"";position:absolute;left:2px;top:.62em;
+    width:5px;height:5px;background:var(--accent);border-radius:50%;
+  }
+  .meta{font-size:14px;color:var(--muted);line-height:1.6}
+  .meta b{color:var(--ink);font-weight:600}
+  .lead-note{font-size:14.5px;color:var(--muted);margin-bottom:12px}
+
+  footer{
+    margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--faint);
+  }
+
+  @media (max-width:520px){
+    .skill{flex-direction:column;gap:2px}
+    .skill dt{flex-basis:auto}
+    .topbar{padding:12px 18px}
+    .page{padding:44px 20px 64px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cursor{animation:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* print — the PDF is generated straight from this page; tuned to fit one page */
+  @media print{
+    @page{margin:10mm 12mm}
+    body{background:#fff}
+    .topbar,.cta,.cursor,footer{display:none}
+    .page{max-width:none;padding:0}
+    h1{font-size:26px;margin-bottom:4px}
+    .role{font-size:13.5px;margin-bottom:6px}
+    .contact{margin-bottom:8px;font-size:10.5px;gap:4px 12px}
+    .contact a{border-bottom:none;color:var(--muted)}
+    .summary{margin:10px 0 4px;font-size:11px;line-height:1.45;max-width:none}
+    section{margin-top:13px}
+    h2{font-size:10px;padding-bottom:4px;margin-bottom:7px}
+    .skill{padding:2px 0}
+    .skill dt{font-size:9.5px;flex-basis:96px}
+    .skill dd{font-size:10.5px}
+    .job{margin-bottom:9px;break-inside:avoid}
+    .job-title{font-size:12px}
+    .job-co{font-size:11px}
+    .job-date{font-size:9.5px}
+    .job ul{margin-top:4px}
+    .job li{font-size:10px;margin-bottom:2px;line-height:1.38;padding-left:13px}
+    .job li::before{width:4px;height:4px;top:.5em}
+    .meta{font-size:9.5px;line-height:1.45}
+    a{text-decoration:none;color:inherit}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="mark" href="https://lab980.com">LAB980<span class="dot">.</span>COM</a>
+  <a class="dl" href="Jim_Orr_Resume_2026.pdf" download>Download résumé ↓</a>
+</div>
+<div class="page">
+  <header>
+    <h1>Jim Orr</h1>
+    <p class="role">Software Engineer · Full-Stack &amp; AI-First Development</p>
+    <div class="contact">
+      <a href="mailto:ivjames@gmail.com">ivjames@gmail.com</a>
+      <a href="tel:+19098512915">909-851-2915</a>
+      <span>Remote / CA</span>
+      <a href="https://lab980.com">Projects: lab980.com</a>
+    </div>
+    <a class="cta" href="Jim_Orr_Resume_2026.pdf" download>Download résumé (PDF)</a>
+    <p class="summary">Full-stack web developer with experience shipping and maintaining production applications across e-commerce, logistics, and internal tooling. Comfortable across the stack — backend systems and APIs, frontend implementation, database work, and QA. Since 2022, founder and sole developer of lab980, an independent software lab: ten-plus web applications designed, built, and operated solo — AI-first, from DNS to deploy.</p>
+  </header>
+
+  <section aria-label="Technical skills">
+    <h2>Technical Skills</h2>
+    <dl><div class="skill"><dt>Languages</dt><dd>JavaScript / TypeScript, Python, Node.js, PHP</dd></div><div class="skill"><dt>Frontend</dt><dd>React, Next.js, Tailwind CSS, HTML5, CSS3, responsive layouts</dd></div><div class="skill"><dt>Backend</dt><dd>Django, Flask, Express, Prisma, REST APIs, WebSockets, Stripe integration</dd></div><div class="skill"><dt>Databases</dt><dd>PostgreSQL, MySQL, SQLite</dd></div><div class="skill"><dt>AI</dt><dd>AI-first development (Claude Code), Anthropic &amp; OpenAI APIs, LLM application design</dd></div><div class="skill"><dt>Testing / QA</dt><dd>Playwright, pytest, Vitest, Selenium / WebDriver, Pega</dd></div><div class="skill"><dt>Ops</dt><dd>nginx, pm2, DigitalOcean, GitHub Actions, TLS/certbot, Git</dd></div></dl>
+  </section>
+
+  <section aria-label="Experience">
+    <h2>Experience</h2>
+    <div class="job"><div class="job-head"><span class="job-title">Founder / Sole Developer <span class="job-co">· lab980 — independent software lab · Remote</span></span><span class="job-date">2022 – Present</span></div><ul><li>Built and operate <a href="https://lab980.com" style="color:var(--accent-ink)">lab980.com</a>, a self-hosted platform running 10+ production web applications end-to-end: scripted provisioning (DNS → nginx → TLS → pm2), per-site operate CLIs, and repeatable deploy pipelines.</li><li>Shipped live products including an autonomous AI publication that writes, illustrates, and publishes its own articles on a schedule (GitHub Actions + Claude API); a quiz platform with dynamically generated share cards (Next.js, Prisma, PostgreSQL); and an AI art generator that safely executes LLM-written code inside a three-layer sandbox.</li><li>Rebuilt two Southern California theatre websites for real clients, starting from an axe-core accessibility audit that documented 26 WCAG violations on the incumbent site.</li><li>Currently building a multi-tenant box-office SaaS (Django, PostgreSQL, Stripe, in-browser multi-ticket QR scanning) and a conflict-proof gig-scheduling platform (Next.js, TypeScript, Prisma).</li><li>AI-first workflow throughout: Claude Code daily, with test coverage in Playwright, pytest, and Vitest.</li></ul></div>
+    <div class="job"><div class="job-head"><span class="job-title">QA Engineer / SDET <span class="job-co">· Hoverstate 2.0 · Woodland Hills, CA</span></span><span class="job-date">Sep 2020 – Apr 2022</span></div><ul><li>Tested multiple client web platforms; worked with development teams on issue identification and release stabilization.</li><li>Built a comprehensive automated test suite for a multi-step business application — covering diverse report types, form logic, file uploads, and JavaScript-based signature fields.</li><li>Designed the automation system to serve both QA and structured data-entry workflows.</li><li>Worked on Pega in both developer and QA capacities; evaluated and prototyped tooling to improve testing efficiency.</li></ul></div><div class="job"><div class="job-head"><span class="job-title">Web Developer <span class="job-co">· ACPro · Fontana, CA</span></span><span class="job-date">Apr 2019 – Mar 2020</span></div><ul><li>Maintained legacy e-commerce and proprietary business platforms.</li><li>Contributed to a system re-architecture that introduced API integrations and modernized core technology dependencies.</li></ul></div><div class="job"><div class="job-head"><span class="job-title">Web Developer <span class="job-co">· Pacific Logistics Corp · Pico Rivera, CA</span></span><span class="job-date">Jan 2014 – Apr 2019</span></div><ul><li>Built and maintained internal web applications and warehouse management systems supporting logistics operations.</li><li>Modernized legacy intranet infrastructure, replacing aging systems to improve reliability and day-to-day productivity.</li></ul></div>
+    <p class="meta" style="margin-top:18px"><b>Earlier:</b> Web Developer at 4over Inc. (2011–2013) and Warp2Biz (2010–2011); Lead Web Developer at The Dohring Company / MarketSurveys.com (2006–2010); Owner/Freelance Developer at OrrWeb.net (2002–2006); and Senior Programmer at Visual Perspectives Internet (2000–2002). Work spanned legacy PHP web stores and internal frameworks, internal project-management and team-communication tools, survey-production and sales platforms, web development for small and midsize businesses, and backend development for commercial e-commerce platforms.</p>
+  </section>
+
+  <footer>
+    <span>ivjames@gmail.com · 909-851-2915</span>
+    <span>Remote / CA · <a href="https://lab980.com" style="color:var(--faint)">lab980.com</a></span>
+  </footer>
+</div>
+</body>
+</html>
